@@ -1,5 +1,9 @@
 const name = "syncTask";
 
-export const payload = "Sync Task payload";
+export const payload = null;
+
+export const implementation = (element) => {
+    element.wasFail();
+};
 
 export default name;
