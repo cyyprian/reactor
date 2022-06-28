@@ -1,25 +1,21 @@
-import { useEffect } from "react";
+import React from "react";
 
 import { useElement } from "reactor";
-import { asyncTask, someTask } from "elements";
+import { greetings } from "elements";
 
-function UserInterface() {
-    const [elAsyncTask, loadElAsyncTask] = useElement(asyncTask);
+function UserInterface({ coreElements }) {
+    const [elGreetings] = useElement(greetings);
 
-    const [elSomeTask, loadElSomeTask] = useElement(someTask);
-
-    useEffect(() => {
-        loadElAsyncTask("Hello world!");
-    }, [loadElAsyncTask]);
-
-    useEffect(() => {
-        loadElSomeTask();
-    }, []);
+    if (coreElements.status === "loading")
+        return (
+            <div className="UserInterface">
+                <h1>Loading elements...</h1>
+            </div>
+        );
 
     return (
         <div className="UserInterface">
-            <h1>UserInterface</h1>
-            <h2>{elAsyncTask.payload}</h2>
+            <h1>{elGreetings.payload}</h1>
         </div>
     );
 }
