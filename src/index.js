@@ -2,8 +2,11 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import { Provider } from "react-redux";
 
+import reactorPrerequisites from "./reactor/reactorPrerequisites";
 import store from "./app/store";
 import App from "./App";
+
+reactorPrerequisites();
 
 const container = document.getElementById("root");
 const root = createRoot(container);

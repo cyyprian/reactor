@@ -1,18 +1,25 @@
 import { useEffect } from "react";
 
 import { useElement } from "reactor";
-import { asyncTask } from "elements";
+import { asyncTask, someTask } from "elements";
 
 function UserInterface() {
     const [elAsyncTask, loadElAsyncTask] = useElement(asyncTask);
+
+    const [elSomeTask, loadElSomeTask] = useElement(someTask);
 
     useEffect(() => {
         loadElAsyncTask("Hello world!");
     }, [loadElAsyncTask]);
 
+    useEffect(() => {
+        loadElSomeTask();
+    }, []);
+
     return (
         <div className="UserInterface">
-            <h1>UserInterface {elAsyncTask.payload}</h1>
+            <h1>UserInterface</h1>
+            <h2>{elAsyncTask.payload}</h2>
         </div>
     );
 }
